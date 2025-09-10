@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: learning-devops
+spec:
+  replicas: 3  # We want 3 copies of the app
+  selector:
+    matchLabels:
+      app: learning-devops
+  template:
+    metadata:
+      labels:
+        app: learning-devops
+    spec:
+      containers:
+      - name: learning-devops
+        image: masumoou/learning-devops:latest  # This is your Docker image
+        ports:
+        - containerPort: 8080  # App listens on port 8080
+
